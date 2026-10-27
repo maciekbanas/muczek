@@ -16,3 +16,32 @@ closeButton.addEventListener("click", () => lightbox.close());
 lightbox.addEventListener("click", (event) => {
   if (event.target === lightbox) lightbox.close();
 });
+
+// Public site-wide total; GoatCounter caches this independently of tracking.
+async function loadVisitCount() {
+  const counter = document.querySelector("#visit-count");
+  if (!counter) return;
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 5000);
+
+  try {
+    const response = await fetch("https://muczek.goatcounter.com/counter/TOTAL.json", {
+      signal: controller.signal,
+      credentials: "omit",
+    });
+    if (!response.ok) throw new Error("Visit count unavailable");
+
+    const data = await response.json();
+    if (typeof data.count !== "string" || !/^\d[\d\s,.]*$/.test(data.count)) {
+      throw new Error("Invalid visit count");
+    }
+    counter.textContent = data.count;
+  } catch {
+    counter.textContent = "Niedostępne";
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+loadVisitCount();
