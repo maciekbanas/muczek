@@ -39,6 +39,7 @@ async function loadVisitCount() {
     counter.textContent = data.count;
   } catch {
     counter.textContent = "Niedostępne";
+    counter.title = "Nie udało się pobrać statystyk GoatCounter. Publiczny licznik musi być włączony w ustawieniach usługi; połączenie może też blokować przeglądarka.";
   } finally {
     clearTimeout(timeout);
   }
