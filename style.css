@@ -142,6 +142,7 @@ h2 { font-size: clamp(38px, 4.2vw, 58px); letter-spacing: -.045em; line-height: 
   cursor: zoom-in;
 }
 .comic-image-button img { display: block; width: 100%; height: auto; filter: contrast(1.02); }
+.comic-card.compact .comic-image-button img { aspect-ratio: 1044 / 496; object-fit: contain; }
 .zoom-hint {
   position: absolute;
   right: 28px;
