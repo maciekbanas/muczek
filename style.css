@@ -177,7 +177,6 @@ h2 { font-size: clamp(38px, 4.2vw, 58px); letter-spacing: -.045em; line-height: 
 
 footer { height: 140px; display: flex; align-items: center; justify-content: space-between; }
 footer p { margin: 0; color: var(--muted); font: 10px "DM Mono", monospace; text-transform: uppercase; letter-spacing: .08em; }
-.visit-counter strong { color: var(--ink); font-weight: 500; }
 .footer-logo .logo-mark { width: 18px; height: 18px; box-shadow: 3px 2px 0 var(--ink); }
 
 .lightbox {
