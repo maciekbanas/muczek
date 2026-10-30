@@ -136,13 +136,12 @@ h2 { font-size: clamp(38px, 4.2vw, 58px); letter-spacing: -.045em; line-height: 
   display: block;
   position: relative;
   width: 100%;
-  padding: 18px;
+  padding: 0;
   border: 0;
   background: var(--white);
   cursor: zoom-in;
 }
 .comic-image-button img { display: block; width: 100%; height: auto; filter: contrast(1.02); }
-.comic-card.compact .comic-image-button img { aspect-ratio: 1044 / 496; object-fit: contain; }
 .zoom-hint {
   position: absolute;
   right: 28px;
@@ -205,7 +204,6 @@ footer p { margin: 0; color: var(--muted); font: 10px "DM Mono", monospace; text
   .section-heading { margin-bottom: 40px; }
   .comic-list { gap: 64px; }
   .comic-card, .comic-card.featured { width: 100%; }
-  .comic-image-button { padding: 8px; }
   .about { grid-template-columns: 1fr; gap: 30px; padding: 60px 0; }
   .about > a { justify-self: start; }
   footer { min-height: 150px; height: auto; display: grid; gap: 12px; align-content: center; }
