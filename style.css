@@ -122,6 +122,30 @@ h2 { font-size: clamp(38px, 4.2vw, 58px); letter-spacing: -.045em; line-height: 
 .comic-list { display: grid; gap: 90px; }
 .comic-card { width: 74%; }
 .comic-card.featured { width: 100%; }
+.comic-card[id] { scroll-margin-top: 24px; }
+.comic-actions { display: flex; align-items: start; gap: 12px 24px; flex-wrap: wrap; padding-top: 14px; }
+.comic-share summary, .share-options a, .share-options button {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 13px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.comic-share summary { list-style: none; }
+.comic-share summary::-webkit-details-marker { display: none; }
+.comic-share[open] summary { text-decoration: underline; text-underline-offset: 4px; }
+.share-options { display: flex; flex-wrap: wrap; gap: 4px; max-width: 100%; }
+.comic-share { min-width: 0; flex: 1; }
+.share-options a:hover, .share-options button:hover { background: var(--white); }
+.comic-actions :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.share-link { width: 100%; min-width: 0; padding: 10px; }
 .comic-meta {
   display: flex;
   justify-content: space-between;

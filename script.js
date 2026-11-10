@@ -46,3 +46,64 @@ async function loadVisitCount() {
 }
 
 loadVisitCount();
+
+document.querySelectorAll(".comic-card[id]").forEach((card) => {
+  const title = card.querySelector("h3").textContent;
+  const url = `https://muczek.pl/#${card.id}`;
+  const actions = document.createElement("div");
+  actions.className = "comic-actions";
+  actions.innerHTML = `
+    <details class="comic-share">
+      <summary>
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+          <path d="m8.6 10.5 6.8-4M8.6 13.5l6.8 4"/>
+        </svg>
+        <span>Udostępnij</span>
+      </summary>
+      <div class="share-options"></div>
+    </details>
+    <span class="share-status visually-hidden" role="status"></span>`;
+  card.append(actions);
+
+  const options = actions.querySelector(".share-options");
+  const text = `${title} — Muczek i Przyjaciele`;
+  const destinations = [
+    ["Facebook", `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`],
+    ["X", `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`],
+    ["WhatsApp", `https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`],
+  ];
+  destinations.forEach(([name, href]) => {
+    const link = document.createElement("a");
+    link.textContent = name;
+    link.href = href;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.setAttribute("aria-label", `Udostępnij komiks „${title}”: ${name} (nowa karta)`);
+    options.append(link);
+  });
+  const copy = document.createElement("button");
+  copy.type = "button";
+  copy.textContent = "Kopiuj link";
+  copy.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(url);
+      copy.textContent = "Skopiowano!";
+      actions.querySelector(".share-status").textContent = "Link skopiowany.";
+    } catch {
+      actions.querySelector(".share-status").textContent = "Nie udało się skopiować linku. Link do komiksu jest widoczny poniżej.";
+      let fallback = options.querySelector(".share-link");
+      if (!fallback) {
+        fallback = document.createElement("input");
+        fallback.className = "share-link";
+        fallback.readOnly = true;
+        fallback.setAttribute("aria-label", "Link do komiksu — skopiuj ręcznie");
+        fallback.value = url;
+        options.append(fallback);
+      }
+      fallback.focus();
+      fallback.select();
+    }
+  });
+  options.append(copy);
+});
