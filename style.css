@@ -124,7 +124,7 @@ h2 { font-size: clamp(38px, 4.2vw, 58px); letter-spacing: -.045em; line-height: 
 .comic-card.featured { width: 100%; }
 .comic-card[id] { scroll-margin-top: 24px; }
 .comic-actions { display: flex; align-items: start; gap: 12px 24px; flex-wrap: wrap; padding-top: 14px; }
-.like-button, .comic-share summary, .share-options a, .share-options button {
+.comic-share summary, .share-options a, .share-options button {
   min-height: 44px;
   display: inline-flex;
   align-items: center;
@@ -138,7 +138,6 @@ h2 { font-size: clamp(38px, 4.2vw, 58px); letter-spacing: -.045em; line-height: 
   text-decoration: none;
   cursor: pointer;
 }
-.like-button[aria-pressed="true"] { color: #a52b46; cursor: default; opacity: 1; }
 .comic-share summary { list-style: none; }
 .comic-share summary::-webkit-details-marker { display: none; }
 .comic-share[open] summary { text-decoration: underline; text-underline-offset: 4px; }
