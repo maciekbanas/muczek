@@ -48,8 +48,8 @@ async function loadVisitCount() {
 loadVisitCount();
 
 document.querySelectorAll(".comic-card[id]").forEach((card) => {
-  const title = card.querySelector("h3").textContent;
-  const url = `https://muczek.pl/#${card.id}`;
+  const title = card.querySelector("h1, h3").textContent;
+  const url = `https://muczek.pl/komiksy/${card.id}/`;
   const actions = document.createElement("div");
   actions.className = "comic-actions";
   actions.innerHTML = `
