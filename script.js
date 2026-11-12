@@ -1,3 +1,43 @@
+function renderComics() {
+  const template = document.querySelector("#comic-template");
+  const list = document.querySelector(".comic-list");
+  const fragment = document.createDocumentFragment();
+  comics.forEach((comic) => {
+    const card = template.content.firstElementChild.cloneNode(true);
+    card.id = comic.id;
+    card.classList.toggle("compact", Boolean(comic.compact));
+    const time = card.querySelector("time");
+    time.dateTime = comic.date;
+    const [year, month, day] = comic.date.split("-");
+    time.textContent = `${day}.${month}.${year}`;
+    card.querySelector("h3").textContent = comic.title;
+    card.querySelector(".comic-image-button").setAttribute("aria-label", `Powiększ komiks: ${comic.title}`);
+    const image = card.querySelector("img");
+    image.src = comic.image;
+    image.alt = comic.alt;
+    fragment.append(card);
+  });
+  list.replaceChildren(fragment);
+}
+
+renderComics();
+
+// Hash targets are created by JavaScript. Wait for images so their final heights
+// do not move the selected comic after scrolling to an incoming shared link.
+const initialHash = location.hash;
+if (initialHash) {
+  const images = [...document.querySelectorAll(".comic-card img")];
+  Promise.all(images.map((image) => image.complete ? Promise.resolve() : new Promise((resolve) => {
+    image.addEventListener("load", resolve, { once: true });
+    image.addEventListener("error", resolve, { once: true });
+  }))).then(() => {
+    if (location.hash !== initialHash) return;
+    try {
+      document.getElementById(decodeURIComponent(initialHash.slice(1)))?.scrollIntoView();
+    } catch { /* Ignore malformed URL fragments. */ }
+  });
+}
+
 const lightbox = document.querySelector(".lightbox");
 const lightboxImage = lightbox.querySelector("img");
 const closeButton = lightbox.querySelector(".lightbox-close");
