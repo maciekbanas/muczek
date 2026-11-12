@@ -35,88 +35,19 @@
 
     <main id="top">
       <section class="comics-section" id="komiksy" aria-labelledby="comics-title">
-        <div class="comic-list">
-
-          <article class="comic-card compact" id="buka">
-            <div class="comic-meta">
-              <time datetime="2026-11-12">12.11.2026</time>
-            </div>
-            <div class="comic-caption">
-              <h3>Buka</h3>
-            </div>
-            <button class="comic-image-button" type="button" aria-label="Powiększ komiks: Życzenia">
-              <img
-                src="assets/2026_11_buka.png"
-                alt="Trzykadrowy komiks."
-              />
+        <h2 id="comics-title" class="visually-hidden">Komiksy</h2>
+        <div class="comic-list"></div>
+        <noscript><p>Włącz JavaScript, aby zobaczyć komiksy.</p></noscript>
+        <template id="comic-template">
+          <article class="comic-card">
+            <div class="comic-meta"><time></time></div>
+            <div class="comic-caption"><h3></h3></div>
+            <button class="comic-image-button" type="button">
+              <img alt="" />
               <span class="zoom-hint" aria-hidden="true">Powiększ ↗</span>
             </button>
           </article>
-
-          <article class="comic-card compact" id="keto">
-            <div class="comic-meta">
-              <time datetime="2026-10-27">4.11.2026</time>
-            </div>
-            <div class="comic-caption">
-              <h3>Keto</h3>
-            </div>
-            <button class="comic-image-button" type="button" aria-label="Powiększ komiks: Życzenia">
-              <img
-                src="assets/2026_10_keto.png"
-                alt="Trzykadrowy komiks. "
-              />
-              <span class="zoom-hint" aria-hidden="true">Powiększ ↗</span>
-            </button>
-          </article>
-
-          <article class="comic-card compact" id="zyczenia">
-            <div class="comic-meta">
-              <time datetime="2026-10-27">27.10.2026</time>
-            </div>
-            <div class="comic-caption">
-              <h3>Życzenia</h3>
-            </div>
-            <button class="comic-image-button" type="button" aria-label="Powiększ komiks: Życzenia">
-              <img
-                src="assets/2026_10_zyczenia.png"
-                alt="Trzykadrowy komiks. Słoń pyta, jak złożyć koledze z pracy życzenia urodzinowe. Za radą znajomego mówi od serca: życzy koledze kradzieży nowego auta i zwolnienia z pracy."
-              />
-              <span class="zoom-hint" aria-hidden="true">Powiększ ↗</span>
-            </button>
-          </article>
-
-          <article class="comic-card" id="nie-przejmuj-sie">
-            <div class="comic-meta">
-              <time datetime="2026-09-28">28.09.2026</time>
-            </div>
-            <div class="comic-caption">
-              <h3>Nie przejmuj się</h3>
-            </div>
-            <button class="comic-image-button" type="button" aria-label="Powiększ komiks: Nie przejmuj się">
-              <img
-                src="assets/2026_09_nie_przejmuj_sie.png"
-                alt="Trzykadrowy komiks. Muzyk martwi się, że ludzie nabiają się z niego na forum. Kolega słoń mówi mu, by się nie przejmował, po czym sam zaczyna się przejmować."
-              />
-              <span class="zoom-hint" aria-hidden="true">Powiększ ↗</span>
-            </button>
-          </article>
-
-          <article class="comic-card" id="bezalkoholowe">
-            <div class="comic-meta">
-              <time datetime="2026-09-21">21.09.2026</time>
-            </div>
-            <div class="comic-caption">
-              <h3>Bezalkoholowe</h3>
-            </div>
-            <button class="comic-image-button" type="button" aria-label="Powiększ komiks: Bezalkoholowe">
-              <img
-                src="assets/2026_09_bezalkoholowe.png"
-                alt="Dwukadrowy komiks. Klient bierze butelkę ze sklepowej półki, a sprzedawca przypomina mu, że jest bezalkoholowa."
-              />
-              <span class="zoom-hint" aria-hidden="true">Powiększ ↗</span>
-            </button>
-          </article>
-        </div>
+        </template>
       </section>
 
       <section class="about" id="kontakt" aria-labelledby="about-title">
@@ -141,6 +72,7 @@
       <img alt="" />
     </dialog>
 
+    <script src="comics.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
