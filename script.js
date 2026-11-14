@@ -89,7 +89,7 @@ loadVisitCount();
 
 document.querySelectorAll(".comic-card[id]").forEach((card) => {
   const title = card.querySelector("h3").textContent;
-  const url = `https://muczek.pl/#${card.id}`;
+  const url = `https://muczek.pl/share/${card.id}/`;
   const actions = document.createElement("div");
   actions.className = "comic-actions";
   actions.innerHTML = `
