@@ -1,6 +1,14 @@
 // Kolejność wpisów określa kolejność pasków na stronie (najnowsze na początku).
 const comics = [
   {
+    "id": "pamietasz",
+    "date": "2026-11-18",
+    "title": "Pamiętasz?",
+    "image": "assets/2026_11_pamietasz.png",
+    "alt": "Trzykadrowy komiks.",
+    "compact": true
+  },
+  {
     "id": "buka",
     "date": "2026-11-12",
     "title": "Buka",
